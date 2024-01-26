@@ -21,7 +21,7 @@ jobs:
         run: pip install --upgrade platformio
 
       - name: Fetch Library Dependencies
-        run: pio lib install
+        run: pio pkg install
 
       - name: Build PlatformIO Project
         run: pio run
