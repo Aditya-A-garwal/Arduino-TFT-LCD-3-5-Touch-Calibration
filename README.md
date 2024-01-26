@@ -1,4 +1,4 @@
-# Calibrate 3.5' LCD Touchscreen With Arduino UNO R3/R4
+# Calibrate 3.5" LCD Touchscreen With Arduino UNO R3/R4
 
 ![GitHub License](https://img.shields.io/github/license/Aditya-A-garwal/Arduino-TFT-3-5-Touch-Calibration)
 ![GitHub forks](https://img.shields.io/github/forks/Aditya-A-garwal/Arduino-TFT-3-5-Touch-Calibration?style=flat-square&color=blue)
@@ -11,12 +11,12 @@
 
 ## Overview
 
-This repository contains a program to calibrate a 3.5' touch screen display shield, as shown below -
+This repository contains a program to calibrate a 3.5" touch screen display shield, as shown below -
 
 |![Image of LCD Touch Shield from Top](images/LCD_top.png)|![Image of LCD Touch Shield from Bottom](images/LCD_bottom.png)|
 |-|-|
 
-Most 3.5' LCD Touch displays use the ILI9486 Display Driver and include a resistive touchscreen. **The PCB Layout & silkscreen text may vary slightly between displays. This does not change their behaviour and functionality.** This repository depends on the following libraries -
+Most 3.5" LCD Touch displays use the ILI9486 Display Driver and include a resistive touchscreen. **The PCB Layout & silkscreen text may vary slightly between displays. This does not change their behaviour and functionality.** This repository depends on the following libraries -
 
 - [Adafruit Touch Screen Library](https://github.com/adafruit/Adafruit_TouchScreen) to manage touch input
 - [Adafruit GFX Library](https://github.com/adafruit/Adafruit-GFX-Library/tree/master) for graphics primitives
