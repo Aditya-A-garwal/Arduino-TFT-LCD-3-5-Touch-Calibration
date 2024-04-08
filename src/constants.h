@@ -14,8 +14,8 @@ const uint16_t DISPLAY_HEIGHT  = 480;
 
 // touch constants
 
-const uint16_t PRESSURE_LEFT   = 10;
-const uint16_t PRESSURE_RIGHT  = 1200;
+const uint16_t PRESSURE_LO   = 10;
+const uint16_t PRESSURE_HI  = 1200;
 
 const int XP = 8;
 const int XM = A2;

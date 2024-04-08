@@ -11,14 +11,14 @@ const int CROSSHAIR_RIGHT = DISPLAY_WIDTH - 1 - (CROSSHAIR_W / 2);
 const int CROSSHAIR_TOP = CROSSHAIR_H / 2;
 const int CROSSHAIR_BOTTOM = DISPLAY_HEIGHT - 1 - (CROSSHAIR_H / 2);
 
-const int crosshairCoors[][2] = {
+const int crosshair_coors[][2] = {
   {CROSSHAIR_LEFT, CROSSHAIR_TOP},
   {CROSSHAIR_RIGHT, CROSSHAIR_TOP},
   {CROSSHAIR_LEFT, CROSSHAIR_BOTTOM},
   {CROSSHAIR_RIGHT, CROSSHAIR_BOTTOM},
 };
 
-const int NUM_CROSSHAIRS = sizeof(crosshairCoors) / sizeof(crosshairCoors[0]);
+const int NUM_CROSSHAIRS = sizeof(crosshair_coors) / sizeof(crosshair_coors[0]);
 
 MCUFRIEND_kbv tft;
 
@@ -51,7 +51,7 @@ bool valid_touch() {
   TSPoint p = ts.getPoint();
   to_display_mode();
 
-  return (PRESSURE_LEFT <= p.z) && (p.z <= PRESSURE_RIGHT);
+  return (PRESSURE_LO <= p.z) && (p.z <= PRESSURE_HI);
 }
 
 void get_touch(uint16_t *xptr, uint16_t *yptr) {
@@ -60,7 +60,7 @@ void get_touch(uint16_t *xptr, uint16_t *yptr) {
 
   while (1) {
     p = ts.getPoint();
-    if ((PRESSURE_LEFT <= p.z) && (p.z <= PRESSURE_RIGHT)) {
+    if ((PRESSURE_LO <= p.z) && (p.z <= PRESSURE_HI)) {
       break;
     }
   }
@@ -92,8 +92,8 @@ void setup() {
 
   for (int i = 0; i < NUM_CROSSHAIRS; ++i) {
 
-    uint16_t cx = crosshairCoors[i][0];
-    uint16_t cy = crosshairCoors[i][1];
+    uint16_t cx = crosshair_coors[i][0];
+    uint16_t cy = crosshair_coors[i][1];
 
     uint32_t ax = 0;
     uint32_t ay = 0;
@@ -125,8 +125,8 @@ void setup() {
 
   for (int i = 0; i < NUM_CROSSHAIRS; ++i) {
 
-    uint16_t cx = crosshairCoors[i][0];
-    uint16_t cy = crosshairCoors[i][1];
+    uint16_t cx = crosshair_coors[i][0];
+    uint16_t cy = crosshair_coors[i][1];
 
     uint16_t tx = touch_coors[i][0];
     uint16_t ty = touch_coors[i][1];
@@ -146,16 +146,16 @@ void setup() {
     }
   }
 
-  xbeginf >>= 1;
-  xendf >>= 1;
-  ybeginf >>= 1;
-  yendf >>= 1;
+  xbeginf /= 2;
+  xendf /= 2;
+  ybeginf /= 2;
+  yendf /= 2;
 
-  xbegin = map(0, 0 + (CROSSHAIR_W >> 1), DISPLAY_WIDTH - 1 - (CROSSHAIR_W >> 1), xbeginf, xendf);
-  xend = map(DISPLAY_WIDTH - 1, 0 + (CROSSHAIR_W >> 1), DISPLAY_WIDTH - 1 - (CROSSHAIR_W >> 1), xbeginf, xendf);
+  xbegin = map(0, CROSSHAIR_LEFT, CROSSHAIR_RIGHT, xbeginf, xendf);
+  xend = map(DISPLAY_WIDTH - 1, CROSSHAIR_LEFT, CROSSHAIR_RIGHT, xbeginf, xendf);
 
-  ybegin = map(DISPLAY_HEIGHT- 1, 0 + (CROSSHAIR_H >> 1), DISPLAY_HEIGHT- 1 - (CROSSHAIR_H >> 1), ybeginf, yendf);
-  yend = map(0, 0 + (CROSSHAIR_H >> 1), DISPLAY_HEIGHT - 1 - (CROSSHAIR_H >> 1), ybeginf, yendf);
+  ybegin = map(DISPLAY_HEIGHT - 1, CROSSHAIR_TOP, CROSSHAIR_BOTTOM, ybeginf, yendf);
+  yend = map(0, CROSSHAIR_TOP, CROSSHAIR_BOTTOM, ybeginf, yendf);
 
   Serial.println("Paste this into constants.h");
   Serial.println();
