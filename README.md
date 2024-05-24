@@ -24,6 +24,9 @@ Most 3.5" LCD Touch displays use the ILI9486 Display Driver and include a resist
 
 The program has been written using PlatformIO, and has been tested on the [Arduino UNO R3](https://docs.arduino.cc/hardware/uno-rev3/), [Arduino UNO R4 Minima](https://docs.arduino.cc/hardware/uno-r4-minima/) & [Arduino UNO R4 WiFi](https://docs.arduino.cc/hardware/uno-r4-wifi/).
 
+> [!TIP]
+> A detailed tutorial on how to use this repository is available at https://dumblebots.com/2024/05/17/using-3-5-tft-lcd-display-with-ili9486-arduino-part-2-touch-calibration/. The tutorial includes a comprehensive explanation of the code as well as the calibration process itself.
+
 ## Building/Uploading With PlatformIO
 
 Since this project has been written using PlatformIO by default, simply run the following commands to fetch the libraries, build the project and upload the program -
